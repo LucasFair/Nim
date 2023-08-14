@@ -1,0 +1,15 @@
+C:\Users\Fair\Documents\Hovedforløb\H1\C#\Nim\bin\Debug\net7.0\Nim.exe
+C:\Users\Fair\Documents\Hovedforløb\H1\C#\Nim\bin\Debug\net7.0\Nim.deps.json
+C:\Users\Fair\Documents\Hovedforløb\H1\C#\Nim\bin\Debug\net7.0\Nim.runtimeconfig.json
+C:\Users\Fair\Documents\Hovedforløb\H1\C#\Nim\bin\Debug\net7.0\Nim.dll
+C:\Users\Fair\Documents\Hovedforløb\H1\C#\Nim\bin\Debug\net7.0\Nim.pdb
+C:\Users\Fair\Documents\Hovedforløb\H1\C#\Nim\obj\Debug\net7.0\Nim.csproj.AssemblyReference.cache
+C:\Users\Fair\Documents\Hovedforløb\H1\C#\Nim\obj\Debug\net7.0\Nim.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Fair\Documents\Hovedforløb\H1\C#\Nim\obj\Debug\net7.0\Nim.AssemblyInfoInputs.cache
+C:\Users\Fair\Documents\Hovedforløb\H1\C#\Nim\obj\Debug\net7.0\Nim.AssemblyInfo.cs
+C:\Users\Fair\Documents\Hovedforløb\H1\C#\Nim\obj\Debug\net7.0\Nim.csproj.CoreCompileInputs.cache
+C:\Users\Fair\Documents\Hovedforløb\H1\C#\Nim\obj\Debug\net7.0\Nim.dll
+C:\Users\Fair\Documents\Hovedforløb\H1\C#\Nim\obj\Debug\net7.0\refint\Nim.dll
+C:\Users\Fair\Documents\Hovedforløb\H1\C#\Nim\obj\Debug\net7.0\Nim.pdb
+C:\Users\Fair\Documents\Hovedforløb\H1\C#\Nim\obj\Debug\net7.0\Nim.genruntimeconfig.cache
+C:\Users\Fair\Documents\Hovedforløb\H1\C#\Nim\obj\Debug\net7.0\ref\Nim.dll
