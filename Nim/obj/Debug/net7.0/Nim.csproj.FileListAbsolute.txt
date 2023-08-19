@@ -3,7 +3,6 @@ C:\Users\Fair\Documents\Hovedforløb\H1\C#\Nim\bin\Debug\net7.0\Nim.deps.json
 C:\Users\Fair\Documents\Hovedforløb\H1\C#\Nim\bin\Debug\net7.0\Nim.runtimeconfig.json
 C:\Users\Fair\Documents\Hovedforløb\H1\C#\Nim\bin\Debug\net7.0\Nim.dll
 C:\Users\Fair\Documents\Hovedforløb\H1\C#\Nim\bin\Debug\net7.0\Nim.pdb
-C:\Users\Fair\Documents\Hovedforløb\H1\C#\Nim\obj\Debug\net7.0\Nim.csproj.AssemblyReference.cache
 C:\Users\Fair\Documents\Hovedforløb\H1\C#\Nim\obj\Debug\net7.0\Nim.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Fair\Documents\Hovedforløb\H1\C#\Nim\obj\Debug\net7.0\Nim.AssemblyInfoInputs.cache
 C:\Users\Fair\Documents\Hovedforløb\H1\C#\Nim\obj\Debug\net7.0\Nim.AssemblyInfo.cs

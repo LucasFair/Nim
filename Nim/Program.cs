@@ -7,79 +7,125 @@ namespace Nim
     {
         static void Main(string[] args)
         {
-
             var rnd = new Random();
-            //int cpuNum;
-            //cpuNum = 3;
-            //int cpuRnd = rnd.Next(cpuNum, cpuNum);
-            int cpuTime = 500;
-            int matchCnt = 7;
-            int userIn;
+            byte userMax = 3;  // The maximum amount the player/user is allowed to input
+            int cpuTime = rnd.Next(512, 4096);  // Psudo-thinking time for the CPU, where the pauses are in between these two values
+            byte matchCnt = 7;
+            byte userIn = 0;
+            byte turnCnt;
+            byte matchUpd = 0;
+            byte cpuRnd;
+            string retryIn;
 
-            Console.WriteLine("Matches -> " + matchCnt + " left.");  // Round 1
-            Console.WriteLine("Pick 1 - 3 match(es)!");
-            Console.Write("> ");
-            userIn = Convert.ToInt32(Console.ReadLine());
-            int matchUpd = matchCnt - userIn;
-            matchCnt = matchUpd;
-            Console.WriteLine("Matches -> " + matchCnt + " left.");
-            if (matchUpd < 7)  // Round 1 CPU
+            Console.WriteLine("Welcome to NIM. Not to be confused with Nine Inch Nails (NIN)." +
+           "\nIn this game you have 7 matches. You can pick 1 - 3 matches per turn,\nand the " +
+           "goal is to pick up the last match before the opponent does!");
+
+            do
             {
+                for (turnCnt = 1; matchCnt > 0; turnCnt++)
                 {
-                    int cpuRnd = rnd.Next(1, 3);
-                    Thread.Sleep(cpuTime);
-                    Console.WriteLine("The opponent took " + cpuRnd + "!");
-                    matchUpd = matchCnt - cpuRnd;
-                    matchCnt = matchUpd;
-                    Console.WriteLine("...");
-                    Console.WriteLine("Matches -> " + matchCnt + " left.");
-                    if (matchUpd < 6)  // Round 2
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine("\nRound number " + turnCnt + "!\n");
+                    Console.ResetColor();
+                    Console.WriteLine("How many do you want to pick up?");
+                    while (true)
                     {
-                        Thread.Sleep(cpuTime);
-                        Console.WriteLine("Pick 1 - 3 match(es)!");
-                        Console.Write("> ");
-                        userIn = Convert.ToInt32(Console.ReadLine());
-                        matchUpd = matchCnt - userIn;
-                        matchCnt = matchUpd;
-
-                        Console.WriteLine("Matches -> " + matchCnt + " left.");
-                        if (matchUpd < 5)  // Round 2 CPU
+                        if (matchCnt > 3)  // Scales the pick-pool for the CPU to prevent picking more matches than available 
                         {
-                            cpuRnd = rnd.Next(1, 1);
-                            Thread.Sleep(cpuTime);
-                            Console.WriteLine("The opponent took " + cpuRnd + "!\n...");
-                            matchUpd = matchCnt - cpuRnd;
-                            matchCnt = matchUpd;
-                            Console.WriteLine("Matches -> " + matchCnt + " left.");
-                            if (matchUpd < 4)  // Round 3
+                            userMax = 3;
+                        }
+                        else if (matchCnt == 2)
+                        {
+                            userMax = 2;
+                        }
+                        else if (matchCnt == 1)
+                        {
+                            userMax = 1;
+                        }
+                        Console.Write("> "); // Player
+                        if (!byte.TryParse(Console.ReadLine(), out userIn))
+                        {
+                            Console.WriteLine("You can't choose nothing.");
+                        }
+                        if (userIn <= userMax && userIn > 0)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            if (matchCnt > 3)
                             {
-                                Thread.Sleep(cpuTime);
-                                Console.WriteLine("Pick 1 - 3 match(es)!");
-                                Console.Write("> ");
-                                userIn = Convert.ToInt32(Console.ReadLine());
-                                matchUpd = matchCnt - userIn;
-                                matchCnt = matchUpd;
-                                Console.WriteLine("Matches -> " + matchCnt + " left.");
-                                if (matchUpd < 5)  // Round 3 CPU
-                                {
-                                    Thread.Sleep(cpuTime);
-                                    Console.WriteLine("The opponent took " + cpuRnd + "!\n...");
-                                    matchUpd = matchCnt - cpuRnd;
-                                    matchCnt = matchUpd;
-                                    Console.WriteLine("Matches -> " + matchCnt + " left.");
-                                    if (matchUpd < 4)  // Round 4
-                                    {
-                                        Console.WriteLine("YOU WIN.");
-                                    }
-
-                                }
+                                Console.WriteLine("Please enter a number from 1 - 3.");
+                            }
+                            else if (matchCnt == 2)
+                            {
+                                Console.WriteLine("Please enter a number from 1 - 2.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Please enter 1 to win.");
                             }
                         }
-
                     }
-
+                    matchUpd = (byte)(matchCnt - userIn);
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("Matches -> " + matchUpd + " left.");
+                    Console.ResetColor();
+                    //Console.WriteLine("Matches -> " + matchUpd + " left.");
+                    //Console.WriteLine("Match count = " + matchCnt + "\nMatch update = " + matchUpd);
+                    if (matchUpd == 0)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("\nPLAYER WINS");
+                        Console.ResetColor();
+                        Console.Beep();
+                        break;
+                    }
+                    Console.WriteLine(string.Empty);
+                    if (matchCnt > matchUpd)  // CPU
+                    {
+                        matchCnt = matchUpd;
+                        if (matchCnt > 3)  // Scales the pick-pool for the CPU to prevent picking more matches than available
+                        {
+                            cpuRnd = (byte)rnd.Next(1, 3);
+                        }
+                        else if (matchCnt == 2)
+                        {
+                            cpuRnd = (byte)rnd.Next(1, 2);
+                        }
+                        else
+                        {
+                            cpuRnd = 1;
+                        }
+                        Console.WriteLine("...\n");
+                        Thread.Sleep(cpuTime);  // Adds pause for dramatic effect
+                        Console.WriteLine("The opponent picked up " + cpuRnd + "!");
+                        matchUpd = (byte)(matchCnt - cpuRnd);
+                        //Console.WriteLine("CPU Matches -> " + matchUpd + " left.");
+                        //Console.WriteLine("CPU Match count = " + matchCnt + "\nCPU Match update = " + matchUpd);
+                        matchCnt = matchUpd;
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("Matches -> " + matchCnt + " left.");
+                        Console.ResetColor();
+                        if (matchCnt == 0)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("\nCOMPUTER WINS");
+                            Console.ResetColor();
+                            Console.Beep();
+                            break;
+                        }
+                    }
                 }
-            }
+                Console.WriteLine("\nWould you like to play again? Type \"Y\" " +
+                             "to start over,\nor type anything else (or press enter) to quit the game.");
+                Console.Write("> ");
+                retryIn = Console.ReadLine().ToUpper();  // Ensures that the input will be accepted regardless of the casing,
+                                                         // and that if the user is pedantic enough to use qoutation marks
+                                                         // that will be accepted, as well
+            } while (retryIn == "y" || retryIn == "\"y\"");
+            return;
         }
     }
 }
